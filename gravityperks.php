@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Perks
  * Plugin URI: http://gravitywiz.com/
  * Description: Effortlessly install and manage small functionality enhancements (aka "perks") for Gravity Forms.
- * Version: 2.1.2
+ * Version: 2.1.4
  * Author: Gravity Wiz
  * Author URI: http://gravitywiz.com/
  * License: GPL2
@@ -11,7 +11,7 @@
  * Domain Path: /languages
  */
 
-define( 'GRAVITY_PERKS_VERSION', '2.1.2' );
+define( 'GRAVITY_PERKS_VERSION', '2.1.4' );
 
 /**
  * Include the perk model as early as possible to when Perk plugins are loaded, they can safely extend
@@ -123,25 +123,11 @@ class GravityPerks {
                 // all pages that should be loaded "before" admin
                 switch( gwget('view') ) {
 
-                case 'documentation':
-                    require_once(self::get_base_path() . '/admin/manage_perks.php');
-                    GWPerksPage::load_documentation();
-                    break;
-
-                case 'perk_info':
-                    require_once(self::get_base_path() . '/admin/manage_perks.php');
-                    GWPerksPage::load_perk_info();
-                    break;
-
                 case 'perk_settings':
                     require_once(self::get_base_path() . '/admin/manage_perks.php');
                     GWPerksPage::load_perk_settings();
                     break;
 
-                default:
-                    require_once(self::get_base_path() . '/admin/manage_perks.php');
-                    add_thickbox();
-                    //GWPerksPage::process_actions();
                 }
 
             }

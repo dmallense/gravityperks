@@ -190,9 +190,9 @@ class GWAPI {
 				'%LICENSE_ID%',
 				'%LICENSE_HASH%',
 			), array(
-				rawurlencode(GWAPI::get_site_url()),
-				rawurlencode($license['ID']),
-				rawurlencode(md5(GWPerks::get_license_key())),
+				rawurlencode( GWAPI::get_site_url() ),
+				rawurlencode( isset( $license['ID'] ) ? $license['ID'] : '' ),
+				rawurlencode( md5( GWPerks::get_license_key() ) ),
 			), $perk->package);
 
 			$perk->download_link = $perk->package;
