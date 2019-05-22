@@ -123,7 +123,7 @@ class GWAPI {
 
 		if ( ! $response ) {
 			if ( $cache ) {
-				set_transient( $transient, null, $cache );
+				set_transient( $transient, null, $cache_expiration );
 			}
 
 			return false;

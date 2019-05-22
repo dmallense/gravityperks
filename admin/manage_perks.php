@@ -1004,7 +1004,7 @@ class GWPerksPage {
 
     public static function load_perk_settings() {
 
-    	if( ! current_user_can( 'update_plugins' ) ) {
+    	if( ! current_user_can( 'manage_options' ) ) {
     		die( __( 'You don\'t have permission to access this page.' ) );
 	    }
 
@@ -1012,6 +1012,8 @@ class GWPerksPage {
         $perk->load_perk_data();
 
         if(isset($_POST['gwp_save_settings'])) {
+
+        	check_admin_referer( 'gp_save_settings', 'security' );
 
             $setting_keys = array();
 
@@ -1065,6 +1067,7 @@ class GWPerksPage {
 				        <?php echo $perk->get_settings(); ?>
 			        </div>
 			        <div class="content-footer">
+						<?php wp_nonce_field( 'gp_save_settings', 'security' ); ?>
 				        <input type="submit" id="gwp_save_settings" name="gwp_save_settings" class="button button-primary" value="<?php _e('Save Settings', 'gravityperks'); ?>" />
 			        </div>
 		        </form>
